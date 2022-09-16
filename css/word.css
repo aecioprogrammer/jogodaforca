@@ -1,0 +1,45 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* position: relative;
+  left: 376px;
+  top: 256px; */
+  margin-top: 256px;
+  margin-left: 376px;
+}
+
+#secret-word {
+  font-size: 32px;
+  line-height: 150%;
+  color: #0a3871;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 680px;
+}
+
+::placeholder {
+  color: #0a3871;
+}
+
+.buttons {
+  flex-direction: row;
+  position: relative;
+  width: fit-content;
+}
+
+button {
+  width: 332px;
+  height: 67px;
+}
+
+p {
+  margin-top: 363px;
+  margin-bottom: 22px;
+  font-size: 12px;
+  color: #495057;
+  line-height: 150%;
+  opacity: 0.8;
+  vertical-align: text-top;
+}

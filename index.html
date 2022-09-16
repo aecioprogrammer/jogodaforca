@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <title>Jogo da Forca</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img id="logo-alura" src="./assets/logo.png" alt="logo alura" />
+      </header>
+
+      <section id="main-section">
+        <div class="buttons main-buttons">
+          <a href="#game-section"
+            ><button id="startGameButton">Começar a Jogar</button></a
+          >
+          <a href="#word-section"
+            ><button id="addNewWordButton">Adicionar nova Palavra</button></a
+          >
+        </div>
+      </section>
+
+      <section id="word-section" class="main-content hide-section">
+        <input
+          id="secret-word"
+          type="text"
+          placeholder="Digite uma palavra ou frase"
+        />
+        <p style="font-size: 16px" class="fa">&#xf06a; Máx. de 8 letras</p>
+        <div class="buttons word-section-buttons">
+          <a href="#game-section"
+            ><button id="saveWordButton">Salvar e começar</button></a
+          >
+          <a href="#main-section"
+            ><button id="cancelButton">Cancelar</button></a
+          >
+        </div>
+      </section>
+
+      <section id="game-section" class="hide-section">
+        <canvas width="1200" height="800"></canvas>
+
+        <div class="buttons game-section-buttons">
+          <button id="newGameButton">Novo Jogo</button>
+          <a href="#main-section"
+            ><button id="cancelGameButton">Desistir</button></a
+          >
+        </div>
+      </section>
+    </main>
+
+    <script defer src="./js/forca.js"></script>
+    <script defer src="./js/canvas.js"></script>
+  </body>
+</html>
