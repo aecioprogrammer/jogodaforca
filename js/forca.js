@@ -26,6 +26,7 @@ function start() {
   saveAndBegin();
   cancelGame();
   newGame();
+  showCanvas();
   // inputListener();
 }
 
@@ -37,7 +38,7 @@ function startGame() {
     if (secretWord.length > 0) {
       mainContent.classList.add("hide-section");
       gameSection.classList.remove("hide-section");
-      showCanvas();
+      resetCanvas();
       randomWord();
     } else {
       handleAddWordButton();
@@ -62,20 +63,6 @@ function handleAddWordButton() {
   word.focus();
 }
 
-// function addWord() {
-//   const addWordButton = document.querySelector("#addNewWordButton");
-//   const word = document.getElementById("secret-word");
-//   word.focus();
-
-//   addWordButton.addEventListener("click", function () {
-//     mainContent.classList.add("hide-section");
-//     wordSection.classList.remove("hide-section");
-//     word.value = "";
-//   });
-// }
-
-//Salva a palavra digitada no array de palavras e inicia o jogo
-
 function saveAndBegin() {
   const saveWordButton = document.querySelector("#saveWordButton");
   saveWordButton.addEventListener("click", function () {
@@ -92,7 +79,7 @@ function saveAndBegin() {
       wordSection.classList.add("hide-section");
       gameSection.classList.remove("hide-section");
 
-      showCanvas();
+      resetCanvas();
       randomWord();
     } else {
       word.value = "";
@@ -120,7 +107,7 @@ function handleCancelButton() {
 function newGame() {
   const newGameButton = document.querySelector("#newGameButton");
   newGameButton.addEventListener("click", function () {
-    showCanvas();
+    resetCanvas();
     resetGame();
     randomWord();
   });

@@ -3,7 +3,7 @@ const gameArea = document.querySelector("canvas").getContext("2d");
 
 //Desenha a área do jogo
 //Define o padrão das linhas
-function showCanvas() {
+function resetCanvas() {
   gameArea.lineWidth = 6;
   gameArea.lineCap = "round";
   gameArea.lineJoin = "round";
@@ -11,6 +11,10 @@ function showCanvas() {
   gameArea.strokeStyle = "#0A3871";
   gameArea.fillRect(0, 0, 1200, 800);
   drawGallows();
+}
+
+function clearCanvas() {
+  gameArea.clearRect(0, 0, 1200, 800);
 }
 
 //Desenha as linhas correspondentes ao tamanho da palavra
