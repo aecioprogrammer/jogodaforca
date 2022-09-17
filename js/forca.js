@@ -101,6 +101,7 @@ function handleCancelButton() {
   gameSection.classList.add("hide-section");
   wordSection.classList.add("hide-section");
   mainContent.classList.remove("hide-section");
+  resetGame();
 }
 
 //Reinicia o jogo
