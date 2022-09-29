@@ -20,7 +20,7 @@
         <img id="logo-alura" src="./assets/logo.png" alt="logo alura" />
       </header>
 
-      <section id="main-section">
+      <section id="main-section" class="main-content">
         <div class="buttons main-buttons">
           <a href="#game-section"
             ><button id="startGameButton">Começar a Jogar</button></a
@@ -31,13 +31,19 @@
         </div>
       </section>
 
-      <section id="word-section" class="main-content hide-section">
+      <section id="word-section" class="main-content word-section hide-section">
         <input
           id="secret-word"
           type="text"
           placeholder="Digite uma palavra ou frase"
+          maxlength="12"
         />
-        <p style="font-size: 16px" class="fa">&#xf06a; Máx. de 8 letras</p>
+
+        <p>
+          <span style="font-size: 16px" class="fa">&#xf06a;</span> Máx. de 12
+          letras
+        </p>
+
         <div class="buttons word-section-buttons">
           <a href="#game-section"
             ><button id="saveWordButton">Salvar e começar</button></a
@@ -46,9 +52,16 @@
             ><button id="cancelButton">Cancelar</button></a
           >
         </div>
+
+        <div id="modal" class="modal hide-section">
+          <div class="modal-content">
+            <p>Somente letras sem acento são permitidas!</p>
+            <p>Tente novamente...</p>
+          </div>
+        </div>
       </section>
 
-      <section id="game-section" class="hide-section">
+      <section id="game-section" class="game-section hide-section">
         <canvas width="1200" height="800"></canvas>
 
         <div class="buttons game-section-buttons">
@@ -60,7 +73,7 @@
       </section>
     </main>
 
-    <script defer src="./js/forca.js"></script>
     <script defer src="./js/canvas.js"></script>
+    <script defer src="./js/forca.js"></script>
   </body>
 </html>

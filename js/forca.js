@@ -26,7 +26,7 @@ function start() {
   saveAndBegin();
   cancelGame();
   newGame();
-  showCanvas();
+  windowListener();
   // inputListener();
 }
 
@@ -38,7 +38,7 @@ function startGame() {
     if (secretWord.length > 0) {
       mainContent.classList.add("hide-section");
       gameSection.classList.remove("hide-section");
-      resetCanvas();
+      showCanvas();
       randomWord();
     } else {
       handleAddWordButton();
@@ -63,27 +63,31 @@ function handleAddWordButton() {
   word.focus();
 }
 
+function windowListener() {
+  window.addEventListener("click", handleWindowListener);
+}
+
 function saveAndBegin() {
   const saveWordButton = document.querySelector("#saveWordButton");
   saveWordButton.addEventListener("click", function () {
-    const word = document.querySelector("#secret-word");
-    const wordValue = word.value.toUpperCase();
+    const word = document.getElementById("secret-word");
+    let wordValue = word.value.toUpperCase();
 
     //Verifica se a palavra digitada está conforme as regras, armazena a palavra no array de
     //palavras secretas, ativa a tela do jogo e inicia o jogo
-    if (inputKeyCheck(wordValue)) {
+    // if (inputKeyCheck(wordValue)) {
+    if (validateString(wordValue)) {
       word.value = wordValue;
       !secretWord.includes(wordValue)
         ? secretWord.push(wordValue)
         : console.log("Palavra já inserida!");
       wordSection.classList.add("hide-section");
       gameSection.classList.remove("hide-section");
-
-      resetCanvas();
+      showCanvas();
       randomWord();
     } else {
       word.value = "";
-      alert("Somente letras sem acento são permitidas! Tente novamente...");
+      handleModal();
     }
   });
 }
@@ -170,23 +174,13 @@ function handleKeybordListener(Event) {
       }
     }
   } else {
-    alert("Somente letras sem acento são permitidas! Tente novamente...");
+    // alert("Somente letras sem acento são permitidas! Tente novamente...");
+    handleModal();
   }
 }
 
-// function inputListener() {
-//   const wordInput = document.querySelector("#secret-word");
-//   wordInput.addEventListener('keypress')
-// }
-
 //Reinicializa as variáveis globais e remove o listener para evitar duplicidade
 //de letras erradas
-function resetGame() {
-  wrongGuesses = [];
-  randomSecretWord = "";
-  guessSecretWord = [];
-  document.removeEventListener("keypress", handleKeybordListener);
-}
 
 //Verifica se a letra escolhida está dentro da regra das letras permitidas no jogo
 function inputKeyCheck(text) {
@@ -218,10 +212,16 @@ function guessCheck(guess) {
   return guessCheckError;
 }
 
+function resetGame() {
+  wrongGuesses = [];
+  randomSecretWord = "";
+  guessSecretWord = [];
+  document.removeEventListener("keypress", handleKeybordListener);
+}
+
 //Verifica se o jogador venceu ou perdeu o jogo
 function endGame() {
   let endGameMessage;
-  console.log("Palavra: ", randomSecretWord);
 
   //Verifica se o tamanho do array que armazena os palpites errados chegou ao limite
   if (wrongGuesses.length === 6) {
@@ -240,6 +240,24 @@ function endGame() {
   }
 
   //Chama a função que desenha a mensagem de fim de jogo na tela
+}
+
+function validateString(textToValidate) {
+  const textRGEX = /^[A-Z]+$/g; //áàâãéèêíïóôõöúç ]+$/;
+  return textRGEX.test(textToValidate);
+}
+
+function handleModal() {
+  let modal = document.getElementById("modal");
+  modal.style.display = "flex";
+}
+
+function handleWindowListener(Event) {
+  const modal = document.querySelector(".modal");
+
+  if (Event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
 start();
